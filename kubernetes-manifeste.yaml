@@ -37,8 +37,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: lawfirm-ingress
-  namespace: lawfirm
+  name: hairstylesalon-ingress
+  namespace: hairstylesalon
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
@@ -47,10 +47,10 @@ spec:
   - host: www.cyberrior.com
     http:
       paths:
-      - path: /lawfirm
+      - path: /hairstylesalon
         pathType: Prefix
         backend:
           service:
-            name: lawfirm-service-name
+            name: hairstylesalon-service
             port:
               number: 80      
