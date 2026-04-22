@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hairstylesalon-container
-        image: adil5800/hairstylesalon:v1   # your Docker Hub image
+        image: adil5800/hairstylesalon:v2   # your Docker Hub image
         ports:
         - containerPort: 80
 
@@ -40,17 +40,21 @@ metadata:
   name: hairstylesalon-ingress
   namespace: hairstylesalon
   annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    
 spec:
-  ingressClassName: nginx
+  ingressClassName: webapprouting.kubernetes.azure.com
   rules:
   - host: www.cyberrior.com
     http:
       paths:
-      - path: /hairstylesalon
-        pathType: Prefix
+      - path: /hairstylesalon(/|$)(.*)
+      #- path: /hairstylesalon
+        pathType: ImplementationSpecific
+        #pathType: Prefix
         backend:
           service:
             name: hairstylesalon-service
             port:
-              number: 80      
+              number: 80
