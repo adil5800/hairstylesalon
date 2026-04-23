@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hairstylesalon-container
-        image: adil5800/hairstylesalon:v2   # your Docker Hub image
+        image: adil5800/hairstylesalon:v3   # your Docker Hub image
         ports:
         - containerPort: 80
 
